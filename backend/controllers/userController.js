@@ -2,11 +2,13 @@ const expressAsyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 
 const User = require("../models/userModel");
+const jwt = require("jsonwebtoken");
 
 // Getting A User
 
 const getUser = expressAsyncHandler(async (req, res) => {
-  res.send("Get User Route");
+  const user = req.user;
+  res.json({ user });
 });
 
 // Creating a New User
@@ -32,7 +34,9 @@ const createUser = expressAsyncHandler(async (req, res) => {
     password: hashedPassword,
   });
 
-  res.json({ newUser });
+  const token = generateToken(newUser);
+
+  res.json({ token });
 });
 
 //Login User
@@ -47,13 +51,15 @@ const loginUser = expressAsyncHandler(async (req, res) => {
   }
 
   if (userExist && (await bcrypt.compare(password, userExist.password))) {
+    const token = generateToken(userExist);
     res.json({ message: "Login SuccessFully" });
   }
   throw new Error("InValid Credentials");
 });
 
-
-
+const generateToken = (user) => {
+  return jwt.sign({ user }, process.env.JWT_SECRET_KEY);
+};
 
 module.exports = {
   getUser,
