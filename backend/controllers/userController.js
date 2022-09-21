@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
+const { generateName } = require("../utils/generateName");
 
 // Getting A User
 
@@ -36,12 +37,14 @@ const createUser = expressAsyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
   if (user) throw new Error("User Already Exist");
 
+  const username = await generateName(first_name + last_name);
+
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
   const newUser = await User.create({
     first_name,
     last_name,
-    user_name: first_name + " " + last_name,
+    user_name: username,
     email,
     password: hashedPassword,
     birth_Date,
