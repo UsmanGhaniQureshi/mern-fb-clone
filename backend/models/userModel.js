@@ -18,9 +18,9 @@ const userModel = new mongoose.Schema(
     mobile_number: Number,
     profile_image: String,
     cover_image: String,
-    birth_Date: Number,
-    birth_Month: Number,
-    birth_Year: Number,
+    birth_Date: { type: Number, required: true },
+    birth_Month: { type: Number, required: true },
+    birth_Year: { type: Number, required: true },
 
     friends: { type: Array, default: [] },
     followers: { type: Array, default: [] },

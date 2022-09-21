@@ -1,4 +1,5 @@
 const expressAsyncHandler = require("express-async-handler");
+const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 const User = require("../models/userModel");
@@ -13,16 +14,27 @@ const getUser = expressAsyncHandler(async (req, res) => {
 
 // Creating a New User
 const createUser = expressAsyncHandler(async (req, res) => {
-  const { first_name, last_name, password, email } = req.body;
+  // Fields
+  const {
+    first_name,
+    last_name,
+    password,
+    email,
+    birth_Date,
+    birth_Year,
+    birth_Month,
+  } = req.body;
 
-  if (!first_name || !last_name || !password) {
-    throw new Error("Kindly fill the required fields");
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    res.json({
+      errors: errors.array(),
+    });
   }
 
   const user = await User.findOne({ email });
-  if (user) {
-    throw new Error("User Already Exist");
-  }
+  if (user) throw new Error("User Already Exist");
 
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
@@ -32,7 +44,14 @@ const createUser = expressAsyncHandler(async (req, res) => {
     user_name: first_name + " " + last_name,
     email,
     password: hashedPassword,
+    birth_Date,
+    birth_Month,
+    birth_Year,
   });
+
+  if (!newUser) {
+    throw new Error("Something Went Wrong");
+  }
 
   const token = generateToken(newUser);
 
@@ -43,6 +62,13 @@ const createUser = expressAsyncHandler(async (req, res) => {
 
 const loginUser = expressAsyncHandler(async (req, res) => {
   const { email, password } = req.body;
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    res.json({
+      errors: errors.array(),
+    });
+  }
 
   const userExist = await User.findOne({ email });
 
