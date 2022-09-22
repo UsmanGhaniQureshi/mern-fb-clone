@@ -5,15 +5,15 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const { generateName } = require("../utils/generateName");
+const { sendEmail } = require("../utils/mailer");
 
-// Getting A User
-
+// ============================ Getting A User ===========================
 const getUser = expressAsyncHandler(async (req, res) => {
   const user = req.user;
   res.json({ user });
 });
 
-// Creating a New User
+// ====================== User Registration ===============================
 const createUser = expressAsyncHandler(async (req, res) => {
   // Fields
   const {
@@ -58,11 +58,12 @@ const createUser = expressAsyncHandler(async (req, res) => {
 
   const token = generateToken(newUser);
 
+  sendEmail(email);
+
   res.json({ token });
 });
 
-//Login User
-
+// ======================= User Login ===============================
 const loginUser = expressAsyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const errors = validationResult(req);
@@ -90,8 +91,22 @@ const generateToken = (user) => {
   return jwt.sign({ user }, process.env.JWT_SECRET_KEY);
 };
 
+// ==================== User Activation ==========================
+const activateUser = expressAsyncHandler(async (req, res) => {
+  const { usertoken } = req.params;
+
+  const userID = jwt.verify(usertoken, process.env.JWT_SECRET_KEY);
+
+  const user = await User.findById(userID);
+
+  if (user) {
+    user.verified = true;
+  }
+  await user.save();
+});
+
 module.exports = {
-  getUser,
+  activateUser,
   createUser,
   loginUser,
 };

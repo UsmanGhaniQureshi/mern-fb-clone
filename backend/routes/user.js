@@ -60,4 +60,6 @@ router.post(
   loginUser
 );
 
+router.put("/activate/:usertoken");
+
 module.exports = router;
