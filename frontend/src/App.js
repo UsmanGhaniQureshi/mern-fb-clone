@@ -1,13 +1,7 @@
-import { useEffect } from "react";
+import Register from "./pages/register";
 
 function App() {
-  useEffect(() => {
-    (async () => {
-      const res = await fetch("http://localhost:5000/");
-      console.log(res);
-    })();
-  },[]);
-  return <h1>Welcome to Facebook</h1>;
+  return <Register />;
 }
 
 export default App;
