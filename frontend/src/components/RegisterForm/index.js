@@ -1,27 +1,11 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { FaQuestionCircle, FaTimes } from "react-icons/fa";
 import * as Yup from "yup";
-import { createNumberArray } from "../../helpers/createNumArray";
+import { dropDownDOB } from "../../helpers/dropDownDOB";
 import Input from "../Input";
 
 const RegisterForm = ({ onSubmit, onModalSet }) => {
-  const year = new Date().getFullYear() - 1905;
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  const days = createNumberArray(31);
-  const years = createNumberArray(year);
+  const { days, months, years } = dropDownDOB();
 
   return (
     <Formik
@@ -30,9 +14,9 @@ const RegisterForm = ({ onSubmit, onModalSet }) => {
         firstName: "",
         lastName: "",
         password: "",
-        month: "",
-        day: "",
-        year: "",
+        month: months[new Date().getMonth()],
+        day: new Date().getDate(),
+        year: new Date().getFullYear(),
         gender: "",
       }}
       validationSchema={validationSchema}
@@ -48,9 +32,19 @@ const RegisterForm = ({ onSubmit, onModalSet }) => {
           </div>
           <div className="w-full  border my-2 border-slate-300" />
           <p className="-mt-2">It's quick and easy.</p>
-          <div className="flex justify-between gap-2 md:gap-4">
-            <Input name="firstName" type="text" placeholder="First Name" />
-            <Input name="lastName" type="text" placeholder="Last Name" />
+          <div className="flex justify-between gap-2">
+            <Input
+              isLeft={true}
+              name="firstName"
+              type="text"
+              placeholder="First Name"
+            />
+            <Input
+              isDown={true}
+              name="lastName"
+              type="text"
+              placeholder="Last Name"
+            />
           </div>
           <Input
             name="email"
@@ -70,17 +64,23 @@ const RegisterForm = ({ onSubmit, onModalSet }) => {
                 "Required"}
             </div>
             <div className="flex items-center gap-2 ">
-              <Field as="select" className="flex-1 py-1" name="month">
-                <option value="">Select Month</option>
+              <Field
+                as="select"
+                className="flex-1 py-1 text-sm border outline-none"
+                name="month"
+              >
                 {months.map((month) => (
-                  <option value={month} key={month}>
+                  <option className="px-1" value={month} key={month}>
                     {month}
                   </option>
                 ))}
               </Field>
 
-              <Field as="select" className="flex-1 py-1" name="year">
-                <option value="">Select Year</option>
+              <Field
+                as="select"
+                className="flex-1 py-1 text-sm border outline-none"
+                name="year"
+              >
                 {years.map((year) => (
                   <option value={year} key={year}>
                     {year}
@@ -88,8 +88,11 @@ const RegisterForm = ({ onSubmit, onModalSet }) => {
                 ))}
               </Field>
 
-              <Field as="select" className="flex-1 py-1" name="day">
-                <option value="">Select Day</option>
+              <Field
+                as="select"
+                className="flex-1 py-1 text-sm border outline-none"
+                name="day"
+              >
                 {days.map((day) => (
                   <option value={day} key={day}>
                     {day}

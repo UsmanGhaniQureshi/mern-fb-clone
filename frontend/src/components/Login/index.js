@@ -34,12 +34,14 @@ const Login = ({ onSubmit, onModalSet }) => {
                     name="email"
                     type={"email"}
                     placeholder="Enter Address or Phone Number"
+                    isUp={true}
                   />
                   <Input
-                    isError={!!formik.errors.password}
+                    isError={formik.errors.password}
                     name="password"
                     type={"password"}
                     placeholder="Password"
+                    isUp={false}
                   />
 
                   <button
@@ -77,6 +79,6 @@ const Login = ({ onSubmit, onModalSet }) => {
 export default Login;
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().required("Required").email("Invalid Email Address"),
-  password: Yup.string().required("Required"),
+  email: Yup.string().required("Email is Required").email("Invalid Email Address"),
+  password: Yup.string().required("Password is Required"),
 });

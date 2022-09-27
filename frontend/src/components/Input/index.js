@@ -1,6 +1,7 @@
 import { Field, ErrorMessage } from "formik";
+import Error from "../Error";
 
-const Input = ({ name, type, isError, ...otherProps }) => {
+const Input = ({ name, type, isError, isUp, ...otherProps }) => {
   return (
     <div className="flex flex-col gap-1">
       <Field
@@ -11,7 +12,7 @@ const Input = ({ name, type, isError, ...otherProps }) => {
         }`}
         {...otherProps}
       />
-      <ErrorMessage name={name} />
+      <ErrorMessage name={name} isUp={isUp} component={Error} message={isError} />
     </div>
   );
 };
