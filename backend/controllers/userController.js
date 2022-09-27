@@ -16,16 +16,7 @@ const getUser = expressAsyncHandler(async (req, res) => {
 // ====================== User Registration ===============================
 const createUser = expressAsyncHandler(async (req, res) => {
   // Fields
-  const {
-    first_name,
-    last_name,
-    password,
-    email,
-    birth_Date,
-    birth_Year,
-    birth_Month,
-  } = req.body;
-
+  const { firstName, lastName, password, email, date, year, month } = req.body;
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -37,19 +28,20 @@ const createUser = expressAsyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
   if (user) throw new Error("User Already Exist");
 
-  const username = await generateName(first_name + last_name);
+  const userName = await generateName(firstName + lastName);
 
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
+
   const newUser = await User.create({
-    first_name,
-    last_name,
-    user_name: username,
+    firstName,
+    lastName,
+    userName,
     email,
     password: hashedPassword,
-    birth_Date,
-    birth_Month,
-    birth_Year,
+    date,
+    month,
+    year,
   });
 
   if (!newUser) {
@@ -82,7 +74,7 @@ const loginUser = expressAsyncHandler(async (req, res) => {
 
   if (userExist && (await bcrypt.compare(password, userExist.password))) {
     const token = generateToken(userExist);
-    res.json({ message: "Login SuccessFully" });
+    res.json({ token });
   }
   throw new Error("InValid Credentials");
 });
@@ -94,18 +86,16 @@ const generateToken = (user) => {
 // ==================== User Activation ==========================
 const activateUser = expressAsyncHandler(async (req, res) => {
   const { usertoken } = req.params;
-
-  const userID = jwt.verify(usertoken, process.env.JWT_SECRET_KEY);
-
-  const user = await User.findById(userID);
-
-  if (user) {
-    user.verified = true;
+  const { user } = jwt.verify(usertoken, process.env.JWT_SECRET_KEY);
+  const updateUser = await User.findById(user._id);
+  if (updateUser) {
+    updateUser.isVerified = true;
   }
-  await user.save();
+  await updateUser.save();
 });
 
 module.exports = {
+  getUser,
   activateUser,
   createUser,
   loginUser,

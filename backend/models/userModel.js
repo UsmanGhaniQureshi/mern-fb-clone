@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const userModel = new mongoose.Schema(
   {
-    first_name: { type: String, required: [true, "First Name must Required"] },
-    last_name: { type: String, required: [true, "First Name must Required"] },
-    user_name: {
+    firstName: { type: String, required: [true, "First Name must Required"] },
+    lastName: { type: String, required: [true, "First Name must Required"] },
+    userName: {
       type: String,
       required: [true, "First Name must Required"],
       unique: true,
@@ -15,21 +15,23 @@ const userModel = new mongoose.Schema(
       unique: true,
     },
     password: { type: String, required: [true, "Password Must require"] },
-    mobile_number: Number,
-    profile_image: String,
+    mobileNumber: Number,
+    profileImage: String,
     cover_image: String,
-    birth_Date: { type: Number, required: true },
-    birth_Month: { type: Number, required: true },
-    birth_Year: { type: Number, required: true },
+    date: { type: String, required: true },
+    month: { type: String, required: true },
+    year: { type: String, required: true },
 
     friends: { type: Array, default: [] },
     followers: { type: Array, default: [] },
     following: { type: Array, default: [] },
-    gender: { type: String, enums: ["Male", "Female", "Others"] },
-    martial_status: {
+    gender: { type: String, enums: ["male", "female", "custom"] },
+    martialStatus: {
       type: String,
       enums: ["Single", "In a relationship", "Commited", "Divorced"],
     },
+
+    isVerified: { type: Boolean, default: false },
 
     bio: String,
     religion: String,

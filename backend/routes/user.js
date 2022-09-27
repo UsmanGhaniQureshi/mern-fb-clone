@@ -5,6 +5,7 @@ const {
   getUser,
   createUser,
   loginUser,
+  activateUser,
 } = require("../controllers/userController");
 const { auth } = require("../middlewares/auth");
 const router = express.Router();
@@ -17,12 +18,12 @@ router.post(
     .withMessage("Can not be Empty")
     .isEmail()
     .withMessage("Invalid Email Address"),
-  body("first_name")
+  body("firstName")
     .notEmpty()
     .withMessage("Can not be Empty")
     .isString()
     .withMessage("Must be a String"),
-  body("last_name")
+  body("lastName")
     .notEmpty()
     .withMessage("Can not be Empty")
     .isString()
@@ -32,23 +33,25 @@ router.post(
     .withMessage("Not be Empty")
     .isStrongPassword()
     .withMessage("Password Must be Strong"),
-  body("birth_Date")
+  body("date")
     .notEmpty()
     .withMessage("Can not be Empty")
-    .isNumeric()
+    .isString()
     .withMessage("Must be A Number"),
-  body("birth_Month")
+  body("month")
     .notEmpty()
     .withMessage("Can not be Empty")
-    .isNumeric()
+    .isString()
     .withMessage("Must be A Number"),
-  body("birth_Year")
+  body("year")
     .notEmpty()
     .withMessage("Can not be Empty")
-    .isNumeric()
+    .isString()
     .withMessage("Must be A Number"),
   createUser
 );
+
+// Login
 router.post(
   "/login",
   body("email")
@@ -60,6 +63,5 @@ router.post(
   loginUser
 );
 
-router.put("/activate/:usertoken");
-
+router.put("/activate/:usertoken", activateUser);
 module.exports = router;

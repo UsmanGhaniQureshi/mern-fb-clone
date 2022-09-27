@@ -4,5 +4,4 @@ function getPost(req, res) {
 
 module.exports = {
   getPost,
-  gmailSend,
 };

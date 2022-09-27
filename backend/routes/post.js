@@ -1,9 +1,8 @@
 const express = require("express");
-const { getPost, gmailSend } = require("../controllers/postController");
+const { getPost } = require("../controllers/postController");
 const { auth } = require("../middlewares/auth");
 const router = express.Router();
 
-router.get("/", auth, getPost);
-router.post("/email", gmailSend);
+router.get("/",  getPost);
 
 module.exports = router;

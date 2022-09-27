@@ -3,18 +3,18 @@ const User = require("../models/userModel");
 
 const generateName = expressAsyncHandler(async (un) => {
   let isUniqueNameFound = false;
-  let username = un;
+  let uName = un;
 
   do {
-    const userExist = await User.findOne({ user_name: username });
+    const userExist = await User.findOne({ userName: uName });
     if (!userExist) {
       isUniqueNameFound = true;
+      return uName;
     } else {
-      username += getRandomNumber();
+      uName += getRandomNumber();
       isUniqueNameFound = false;
     }
   } while (isUniqueNameFound);
-  return username;
 });
 
 const getRandomNumber = () => {
