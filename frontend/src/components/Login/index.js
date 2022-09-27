@@ -7,7 +7,7 @@ const Login = ({ onSubmit, onModalSet }) => {
   return (
     <div className="md:py-40  bg-slate-200">
       <div className="flex flex-col md:flex-row items-center justify-center px-5">
-        <div className="flex md:mt-10 md:self-start px-5 py-10 md:py-0 flex-col md:items-start items-center  w-9/12 md:max-w-md">
+        <div className="flex md:mt-10 md:self-start px-5 py-10 md:py-0 flex-col md:items-start items-center  w-11/12 md:max-w-md">
           <div>
             <Facebook className="w-52 md:w-72 -ml-6" />
           </div>

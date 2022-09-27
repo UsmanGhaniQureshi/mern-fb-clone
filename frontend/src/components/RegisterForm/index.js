@@ -6,7 +6,20 @@ import Input from "../Input";
 
 const RegisterForm = ({ onSubmit, onModalSet }) => {
   const year = new Date().getFullYear() - 1905;
-  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
   const days = createNumberArray(31);
   const years = createNumberArray(year);
 
@@ -28,14 +41,14 @@ const RegisterForm = ({ onSubmit, onModalSet }) => {
       onSubmit={onSubmit}
     >
       {(formik) => (
-        <Form className="flex flex-col bg-white max-w-2xl p-3 gap-2 rounded-md shadow-[-5px 4px 18px 0px rgba(125,122,122,0.75)]">
+        <Form className="flex flex-col bg-white max-w-xs mx-auto md:mx-0 md:max-w-2xl p-3 gap-2 rounded-md shadow-[-5px 4px 18px 0px rgba(125,122,122,0.75)]">
           <div className="flex justify-between items-center gap-4">
             <h1 className="text-2xl font-bold">Sign Up</h1>
             <FaTimes className="text-xl text-slate-600" onClick={onModalSet} />
           </div>
           <div className="w-full  border my-2 border-slate-300" />
           <p className="-mt-2">It's quick and easy.</p>
-          <div className="flex justify-between gap-4">
+          <div className="flex justify-between gap-2 md:gap-4">
             <Input name="firstName" type="text" placeholder="First Name" />
             <Input name="lastName" type="text" placeholder="Last Name" />
           </div>
@@ -46,7 +59,7 @@ const RegisterForm = ({ onSubmit, onModalSet }) => {
           />
           <Input name="password" type="password" placeholder="Password" />
 
-          <div className="space-y-1">
+          <div className="text-sm md:text-base space-y-1">
             <div className="flex justify-between  text-xs text-slate-600">
               <p className="flex items-center gap-1">
                 Date of birth <FaQuestionCircle />
@@ -89,7 +102,7 @@ const RegisterForm = ({ onSubmit, onModalSet }) => {
             <p className="flex  items-center gap-1 text-xs text-slate-600">
               Gender <FaQuestionCircle />
             </p>
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center justify-between gap-1 text-sm md:text-base md:gap-4">
               <div className="flex flex-1 items-center border justify-between py-1 px-1 gap-1">
                 <label htmlFor="gender">Male</label>
                 <Field value="male" name="gender" type="radio" />
@@ -107,7 +120,7 @@ const RegisterForm = ({ onSubmit, onModalSet }) => {
 
             <ErrorMessage name="gender" />
           </div>
-          <div className="max-w-md space-y-2 text-slate-400">
+          <div className="w-full  mx-2 md:max-w-md space-y-2 text-slate-400">
             <p className="text-xs">
               People who use our service may have uploaded your contact
               information to Facebook. Learn more.

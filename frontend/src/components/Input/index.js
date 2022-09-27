@@ -6,12 +6,12 @@ const Input = ({ name, type, isError, ...otherProps }) => {
       <Field
         name={name}
         type={type}
-        className={`px-3 py-2 border focus:outline rounded-md ${
+        className={`px-2 w-full md:px-3 text-sm md:text-base py-1 md:py-2 border focus:outline rounded-md ${
           isError ? " focus:outline-red-600" : "focus:outline-blue-600"
         }`}
         {...otherProps}
       />
-      <ErrorMessage  name={name} />
+      <ErrorMessage name={name} />
     </div>
   );
 };
