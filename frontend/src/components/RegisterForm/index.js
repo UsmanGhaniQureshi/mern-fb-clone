@@ -1,11 +1,15 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { FaQuestionCircle, FaTimes } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import * as Yup from "yup";
 import { dropDownDOB } from "../../helpers/dropDownDOB";
 import Input from "../Input";
 
 const RegisterForm = ({ onSubmit, onModalSet }) => {
   const { days, months, years } = dropDownDOB();
+  const user = useSelector((state) => state.user);
+
+  if (user?.errors) return <p>Errors Found</p>;
 
   return (
     <Formik
@@ -15,7 +19,7 @@ const RegisterForm = ({ onSubmit, onModalSet }) => {
         lastName: "",
         password: "",
         month: months[new Date().getMonth()],
-        day: new Date().getDate(),
+        date: new Date().getDate(),
         year: new Date().getFullYear(),
         gender: "",
       }}
@@ -30,6 +34,7 @@ const RegisterForm = ({ onSubmit, onModalSet }) => {
             <h1 className="text-2xl font-bold">Sign Up</h1>
             <FaTimes className="text-xl text-slate-600" onClick={onModalSet} />
           </div>
+          {user?.message && <p>{user.message}</p>}
           <div className="w-full  border my-2 border-slate-300" />
           <p className="-mt-2">It's quick and easy.</p>
           <div className="flex justify-between gap-2">
@@ -58,7 +63,7 @@ const RegisterForm = ({ onSubmit, onModalSet }) => {
               <p className="flex items-center gap-1">
                 Date of birth <FaQuestionCircle />
               </p>
-              {(!formik.values.day ||
+              {(!formik.values.date ||
                 !formik.values.month ||
                 !formik.values.year) &&
                 "Required"}
@@ -91,11 +96,11 @@ const RegisterForm = ({ onSubmit, onModalSet }) => {
               <Field
                 as="select"
                 className="flex-1 py-1 text-sm border outline-none"
-                name="day"
+                name="date"
               >
-                {days.map((day) => (
-                  <option value={day} key={day}>
-                    {day}
+                {days.map((date) => (
+                  <option value={date} key={date}>
+                    {date}
                   </option>
                 ))}
               </Field>
@@ -155,6 +160,6 @@ const validationSchema = Yup.object().shape({
   lastName: Yup.string().required("Required"),
   month: Yup.string().required("Required"),
   year: Yup.string().required("Required"),
-  day: Yup.string().required("Required"),
+  date: Yup.string().required("Required"),
   gender: Yup.string().required("Required"),
 });

@@ -1,5 +1,17 @@
+import { useParams } from "react-router-dom";
+import api from "../api";
+
 const ActivateAccount = () => {
-  return <div>Activate Account</div>;
+  const { usertoken } = useParams();
+
+  const activateUser = async () => {
+    await api.put("/user/activate/" + usertoken);
+  };
+  return (
+    <div>
+      <button onClick={activateUser}>Activate User</button>
+    </div>
+  );
 };
 
 export default ActivateAccount;

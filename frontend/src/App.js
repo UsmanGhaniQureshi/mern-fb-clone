@@ -8,7 +8,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/activate-account" element={<ActivateAccount />} />
+        <Route path="/activate/:usertoken" element={<ActivateAccount />} />
       </Routes>
     </div>
   );

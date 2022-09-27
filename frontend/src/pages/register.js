@@ -1,19 +1,30 @@
 import { useState } from "react";
-import Modal from "../components/Modal";
+import { useDispatch } from "react-redux";
 
+import Modal from "../components/Modal";
 import Login from "../components/Login";
 import RegisterForm from "../components/RegisterForm";
-import { useDispatch } from "react-redux";
+import api from "../api";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const loginHandler = (values) => {
-    dispatch({ type: "LOGIN", payload: values });
+  const loginHandler = async (values) => {
+    const result = await api.post("/user/login", values);
+
+    if (result.data && result.data.token) {
+      dispatch({ type: "LOGIN", payload: result.data });
+
+      navigate("/activate/" + result.data.token);
+    }
   };
-  const registerHandler = (values) => {
-    dispatch({ type: "REGISTER", payload: values });
+  const registerHandler = async (values) => {
+    const result = await api.post("/user/register", values);
+
+    dispatch({ type: "REGISTER", payload: result.data });
   };
   return (
     <div>
