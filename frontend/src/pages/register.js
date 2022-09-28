@@ -6,6 +6,7 @@ import Login from "../components/Login";
 import RegisterForm from "../components/RegisterForm";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Register = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,6 +36,7 @@ const Register = () => {
           onModalSet={() => setIsModalOpen(false)}
         />
       </Modal>
+      <Footer/>
     </div>
   );
 };

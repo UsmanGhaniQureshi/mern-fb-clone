@@ -39,24 +39,30 @@ const RegisterForm = ({ onSubmit, onModalSet }) => {
           <p className="-mt-2">It's quick and easy.</p>
           <div className="flex justify-between gap-2">
             <Input
-              isLeft={true}
+              isError={formik.errors.firstName}
               name="firstName"
               type="text"
               placeholder="First Name"
             />
             <Input
-              isDown={true}
+              isError={formik.errors.lastName}
               name="lastName"
               type="text"
               placeholder="Last Name"
             />
           </div>
           <Input
+            isError={formik.errors.email}
             name="email"
             type="email"
             placeholder="Enter Email Address or Phone Number"
           />
-          <Input name="password" type="password" placeholder="Password" />
+          <Input
+            name="password"
+            type="password"
+            isError={formik.errors.password}
+            placeholder="Password"
+          />
 
           <div className="text-sm md:text-base space-y-1">
             <div className="flex justify-between  text-xs text-slate-600">
