@@ -19,14 +19,14 @@ const Footer = () => {
         <FaRegPlusSquare className="text-lg" />
       </div>
       <div className="w-[80%] p-2 mx-auto flex flex-wrap items-center gap-2">
-        <Link to="">Sign UpLog in</Link>
-        <Link to="">Login</Link>
-        <Link to=""> Messenger</Link>
-        <Link to="">Facebook</Link>
-        <Link to="">LiteWatchPlaces</Link>
-        <Link to="">Lite</Link>
-        <Link to="">Games</Link>
-        <Link to=""> Marketplace</Link>
+        <Link to="/">Sign UpLog in</Link>
+        <Link to="/">Login</Link>
+        <Link to="/"> Messenger</Link>
+        <Link to="/">Facebook</Link>
+        <Link to="/">LiteWatchPlaces</Link>
+        <Link to="/">Lite</Link>
+        <Link to="/">Games</Link>
+        <Link to="/"> Marketplace</Link>
         <Link to="">Meta</Link>
         <Link to="/">Pay</Link>
         <Link to="/">Oculus</Link>

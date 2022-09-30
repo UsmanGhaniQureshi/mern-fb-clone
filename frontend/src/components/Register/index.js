@@ -5,11 +5,9 @@ import * as Yup from "yup";
 import { dropDownDOB } from "../../helpers/dropDownDOB";
 import Input from "../Input";
 
-const RegisterForm = ({ onSubmit, onModalSet }) => {
+const RegisterForm = ({ onSubmit, onModalSet, message }) => {
   const { days, months, years } = dropDownDOB();
   const user = useSelector((state) => state.user);
-
-  if (user?.errors) return <p>Errors Found</p>;
 
   return (
     <Formik
@@ -151,6 +149,7 @@ const RegisterForm = ({ onSubmit, onModalSet }) => {
           >
             Sign Up
           </button>
+          {message && <p>{message}</p>}
         </Form>
       )}
     </Formik>

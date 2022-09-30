@@ -1,12 +1,16 @@
+import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import ActivateAccount from "./pages/activateAccount";
 import Profile from "./pages/profile";
-import Register from "./pages/register";
+import Auth from "./pages/Auth";
+import Home from "./pages/home";
+
 function App() {
+  const { user } = useSelector((state) => state);
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Register />} />
+        <Route path="/" element={user ? <Home /> : <Auth />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/activate/:usertoken" element={<ActivateAccount />} />
       </Routes>
