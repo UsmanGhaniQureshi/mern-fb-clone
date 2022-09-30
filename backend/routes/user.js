@@ -36,17 +36,17 @@ router.post(
   body("date")
     .notEmpty()
     .withMessage("Can not be Empty")
-    .isString()
+    .isNumeric()
     .withMessage("Must be A Number"),
   body("month")
     .notEmpty()
     .withMessage("Can not be Empty")
     .isString()
-    .withMessage("Must be A Number"),
+    .withMessage("Must be A String"),
   body("year")
     .notEmpty()
     .withMessage("Can not be Empty")
-    .isString()
+    .isNumeric()
     .withMessage("Must be A Number"),
   createUser
 );

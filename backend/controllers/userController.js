@@ -18,40 +18,37 @@ const createUser = expressAsyncHandler(async (req, res) => {
   // Fields
   const { firstName, lastName, password, email, date, year, month } = req.body;
   const errors = validationResult(req);
-
   if (!errors.isEmpty()) {
     res.json({
       errors: errors.array(),
     });
   }
 
-  const user = await User.findOne({ email });
-  if (user) throw new Error("User Already Exist");
-
-  const userName = await generateName(firstName + lastName);
+  const emailExist = await User.findOne({ email });
+  if (emailExist)
+    throw new Error(`User with the email address ${email} already Exist`);
 
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
+  const userName = await generateName(firstName + lastName);
 
-  const newUser = await User.create({
-    firstName,
-    lastName,
-    userName,
-    email,
-    password: hashedPassword,
-    date,
-    month,
-    year,
-  });
-
-  if (!newUser) {
-    throw new Error("Something Went Wrong");
+  let newUser;
+  try {
+    newUser = await User.create({
+      firstName,
+      lastName,
+      userName,
+      email,
+      password: hashedPassword,
+      date: Number(date),
+      month,
+      year: Number(year),
+    });
+  } catch (error) {
+    res.json({ error });
   }
-
   const token = generateToken(newUser);
-
   sendEmail(email);
-
   res.json({ token });
 });
 
