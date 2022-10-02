@@ -8,6 +8,9 @@ import {
   FaBell,
   FaGift,
   FaSearch,
+  FaRegEdit,
+  FaBookOpen,
+  FaCalendar,
 } from "react-icons/fa";
 
 import { SiFacebookgaming } from "react-icons/si";
@@ -19,6 +22,17 @@ import Search from "../Search";
 import SearchEdit from "../SearchEdit";
 import Badge from "../Badge";
 import SearchUserItem from "../SearchUserItem";
+import MenuCard from "../MenuCard";
+import {
+  social,
+  entertainment,
+  meta,
+  personal,
+  professional,
+  resources,
+  shopping,
+} from "../../data/Header";
+import CreateCard from "../CreateCard";
 
 const Header = () => {
   const searchRef = useRef(null);
@@ -98,7 +112,7 @@ const Header = () => {
       {isSearch && (
         <div
           ref={searchRef}
-          className="absolute p-2 bg-slate-100 shadow-lg w-[300px] h-[500px] top-0 z-50 box-border gap-2"
+          className="absolute p-2 bg-slate-100  shadow-lg w-[300px] h-[500px] top-0 z-50 box-border gap-2"
         >
           <div className="flex justify-between items-center">
             <GoArrowLeft
@@ -124,19 +138,73 @@ const Header = () => {
       )}
       {isMenu && (
         <div
-          className="absolute w-[550px] bg-slate-50 p-2 rounded-xl h-[600px] right-10 top-20"
+          className="absolute w-[600px] h-[600px] bg-slate-50 p-2 rounded-xl  overflow-scroll right-10 top-20"
           ref={menuRef}
         >
-          <h1 className="font-bold">Menu</h1>
-          <div className="flex-1 flex justify-between gap-5">
-            <div className="flex-1 bg-white p-2">
+          
+          <h1 className="font-extrabold text-xl">Menu</h1>
+          <div className="flex-1  py-2 mx-2 flex justify-between gap-5  ">
+            <div className="flex-1 py-5 rounded-2xl shadow-xl space-y-2 bg-white p-2">
               <div className="flex gap-2 px-2 py-1 text-gray-400 bg-gray-100 flex-1 items-center rounded-full">
                 <FaSearch />
-                <input className="outline-none bg-inherit " />
+                <input
+                  className="outline-none bg-inherit "
+                  placeholder="Search menu"
+                />
               </div>
+              <h1 className="font-bold mx-1">Social</h1>
+              {social.map((item, key) => (
+                <MenuCard key={key} item={item} />
+              ))}
+              {entertainment.map((item, key) => (
+                <MenuCard key={key} item={item} />
+              ))}
+              {shopping.map((item, key) => (
+                <MenuCard key={key} item={item} />
+              ))}
+              {personal.map((item, key) => (
+                <MenuCard key={key} item={item} />
+              ))}
+              {professional.map((item, key) => (
+                <MenuCard key={key} item={item} />
+              ))}
+              {resources.map((item, key) => (
+                <MenuCard key={key} item={item} />
+              ))}
+              {meta.map((item, key) => (
+                <MenuCard key={key} item={item} />
+              ))}
             </div>
-            <div className="w-40 p-1">
-              <h1>Create</h1>
+            <div className="relative rounded-xl bg-white w-52 p-2">
+              <div className="fixed">
+                <h1 className="my-2 font-bold">Create</h1>
+                <CreateCard text="Post">
+                  <FaRegEdit />
+                </CreateCard>
+                <CreateCard text="Story">
+                  <FaBookOpen />
+                </CreateCard>
+                <CreateCard text="Life Event">
+                  <FaCalendar />
+                </CreateCard>
+                <div className="border-t">
+                  <CreateCard text="Page">
+                    <FaRegEdit />
+                  </CreateCard>
+                  <CreateCard text="Ad">
+                    <FaBookOpen />
+                  </CreateCard>
+                  <CreateCard text="Group">
+                    <FaCalendar />
+                  </CreateCard>
+                  <CreateCard text="Event">
+                    <FaCalendar />
+                  </CreateCard>
+                  <CreateCard text="MarketPlace Listing">
+                    <FaCalendar />
+                  </CreateCard>
+                </div>
+              </div>
             </div>
           </div>
         </div>
