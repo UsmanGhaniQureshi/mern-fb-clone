@@ -9,6 +9,7 @@ import HeaderSearch from "../HeaderSearch";
 import HeaderRight from "../HeaderRight";
 import HeaderRecentSearch from "../HeaderRecentSearch";
 import Chats from "../Chats";
+import FBNotification from "../FBNotification";
 
 const Header = () => {
   const searchRef = useRef(null);
@@ -66,18 +67,18 @@ const Header = () => {
       )}
       {isChat && (
         <div
-          className="absolute w-[350px] h-[600px] bg-white p-2 rounded-xl  overflow-scroll right-10 top-20"
+          className="absolute w-[350px] h-[600px] bg-white p-2 rounded-xl  overflow-scroll right-10 top-14"
           ref={chatRef}
         >
-         <Chats/>
+          <Chats />
         </div>
       )}
       {isNotification && (
         <div
-          className="absolute w-[600px] h-[600px] bg-slate-50 p-2 rounded-xl  overflow-scroll right-10 top-20"
+          className="absolute w-[400px] h-[600px] bg-slate-50 p-2 rounded-xl overflow-scroll  right-10 top-14"
           ref={notifcationRef}
         >
-          <h1 className="font-extrabold text-xl">Notification</h1>
+          <FBNotification />
         </div>
       )}
       {isAccount && (
