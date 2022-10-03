@@ -21,21 +21,32 @@ const HeaderMenuSocial = () => {
       {social.map((item, key) => (
         <MenuCard key={key} item={item} />
       ))}
+      <div className="w-full border" />
       {entertainment.map((item, key) => (
         <MenuCard key={key} item={item} />
       ))}
+      <div className="w-full border" />
+
       {shopping.map((item, key) => (
         <MenuCard key={key} item={item} />
       ))}
+      <div className="w-full border" />
+
       {personal.map((item, key) => (
         <MenuCard key={key} item={item} />
       ))}
+      <div className="w-full border" />
+
       {professional.map((item, key) => (
         <MenuCard key={key} item={item} />
       ))}
+      <div className="w-full border" />
+
       {resources.map((item, key) => (
         <MenuCard key={key} item={item} />
       ))}
+      <div className="w-full border" />
+
       {meta.map((item, key) => (
         <MenuCard key={key} item={item} />
       ))}
