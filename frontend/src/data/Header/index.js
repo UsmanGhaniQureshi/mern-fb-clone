@@ -65,13 +65,13 @@ const entertainment = [
 const shopping = [
   {
     heading: "FaceBook Pay",
-    paragraph:
-      "A video destination personalized to your interests and connections.",
+    paragraph: "A seamless, secure way to pay on the apps you already use",
+
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
   {
     heading: "Marketplace",
-    paragraph: "Watch popular live videos from around the world.",
+    paragraph: "Buy and sell in your community",
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
 ];
@@ -79,18 +79,17 @@ const shopping = [
 const personal = [
   {
     heading: "Recent ad activity",
-    paragraph:
-      "A video destination personalized to your interests and connections.",
+    paragraph: "See all the ads you interacted with on facebook.",
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
   {
     heading: "Memories ",
-    paragraph: "Watch popular live videos from around the world.",
+    paragraph: "Browser your old photos, videos and posts on facebook.",
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
   {
     heading: "Saved ",
-    paragraph: "Watch popular live videos from around the world.",
+    paragraph: "Find posts,photos and videos that you saved for later",
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
 ];
@@ -98,13 +97,13 @@ const personal = [
 const professional = [
   {
     heading: "Ads Manager",
-    paragraph:
-      "A video destination personalized to your interests and connections.",
+    paragraph: "Create, manage and track the performace of your ads.",
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
   {
     heading: "Ad Center",
-    paragraph: "Watch popular live videos from around the world.",
+    paragraph:
+      "Manage all the ads you create in Pages with streamlined features.",
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
 ];
@@ -112,34 +111,36 @@ const professional = [
 const resources = [
   {
     heading: "Blood Donations",
-    paragraph:
-      "A video destination personalized to your interests and connections.",
+    paragraph: "Get updates about donating blood near you.",
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
   {
     heading: "Climate Science Center ",
-    paragraph: "Watch popular live videos from around the world.",
+    paragraph: "Learn about climate change and its effects",
+
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
   {
     heading: "COVID-19 Inforamtion Center",
-    paragraph: "Watch popular live videos from around the world.",
+    paragraph:
+      "See the latest prevention tips, community resouces and updates from health organization",
+
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
   {
     heading: "Community Help",
     paragraph:
-      "A video destination personalized to your interests and connections.",
+      "Get involved in your community by creating a drive, requesting or offering help or volunteering",
+
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
   {
     heading: "Emotional Health",
-    paragraph: "Watch popular live videos from around the world.",
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
   {
     heading: "Fundraisers",
-    paragraph: "Watch popular live videos from around the world.",
+    paragraph: "Donate and raise money for nonprofits and personal causes.",
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
 ];
@@ -147,13 +148,13 @@ const resources = [
 const meta = [
   {
     heading: "Messager",
-    paragraph:
-      "A video destination personalized to your interests and connections.",
+    paragraph: "Chat instantly with your friends and connections",
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
   {
     heading: "Messager Kids",
-    paragraph: "Watch popular live videos from around the world.",
+    paragraph: "Let kids message with close friends and family.",
+
     imgUrl: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
   },
 ];
