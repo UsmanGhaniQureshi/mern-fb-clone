@@ -10,6 +10,7 @@ import HeaderRight from "../HeaderRight";
 import HeaderRecentSearch from "../HeaderRecentSearch";
 import Chats from "../Chats";
 import FBNotification from "../FBNotification";
+import Account from "../Account";
 
 const Header = () => {
   const searchRef = useRef(null);
@@ -83,10 +84,10 @@ const Header = () => {
       )}
       {isAccount && (
         <div
-          className="absolute w-[600px] h-[600px] bg-slate-50 p-2 rounded-xl  overflow-scroll right-10 top-20"
+          className="absolute w-[400px] h-[600px] bg-slate-50 p-2 rounded-xl  overflow-scroll right-8 top-12"
           ref={accountRef}
         >
-          <h1 className="font-extrabold text-xl">Account</h1>
+          <Account />
         </div>
       )}
     </div>
