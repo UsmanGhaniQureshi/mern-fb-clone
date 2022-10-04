@@ -1,6 +1,7 @@
 import { FaCog, FaGreaterThan, FaMoon } from "react-icons/fa";
 import { MdHelpOutline, MdFeedback, MdLogout } from "react-icons/md";
 import Badge from "../Badge";
+import FooterSmall from "../FooterSmall";
 const Account = () => {
   return (
     <div className="rounded-xl bg-white shadow-xl px-3 py-2">
@@ -61,6 +62,7 @@ const Account = () => {
           <h1 className="font-medium">Logout</h1>
         </div>
       </div>
+      <FooterSmall/>
     </div>
   );
 };
