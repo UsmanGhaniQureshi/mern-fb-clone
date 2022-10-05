@@ -32,7 +32,7 @@ const Header = () => {
   useOutside(accountRef, () => setIsAccount(false));
 
   return (
-    <div className="relative">
+    <div className="relative z-50">
       <header className="flex justify-between bg-slate-50 px-2 py-1 gap-2">
         <HeaderSearch ref={searchRef} onSetIsSearch={() => setIsSearch(true)} />
         <HeaderMiddle />

@@ -22,6 +22,17 @@ const FBContacts = () => {
         <FBContactItem />
         <FBContactItem />
         <FBContactItem />
+        <FBContactItem />
+        <FBContactItem />
+        <FBContactItem />
+        <FBContactItem />
+        <FBContactItem />
+        <FBContactItem />
+        <FBContactItem />
+        <FBContactItem />
+        <FBContactItem />
+        <FBContactItem />
+
       </div>
     </div>
   );
