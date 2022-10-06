@@ -9,7 +9,6 @@ const Stories = () => {
         <StoryItem />
         <StoryItem />
         <StoryItem />
-        <StoryItem />
       </div>
     </div>
   );
