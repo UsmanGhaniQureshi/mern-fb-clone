@@ -2,7 +2,7 @@ import { FaPlusCircle } from "react-icons/fa";
 
 const CreateStory = () => {
   return (
-    <div className="relative group rounded-2xl box-border  flex flex-col w-28 h-48 hover:opacity-80">
+    <div className="relative group rounded-2xl box-border  flex flex-col h-48 hover:opacity-80">
       <div className="w-full h-[80%] rounded-t-2xl overflow-hidden">
         <img
           className="w-full h-full object-cover group-hover:scale-105 duration-150 transition-transform"

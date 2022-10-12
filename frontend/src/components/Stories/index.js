@@ -1,16 +1,49 @@
 import CreateStory from "../CreateStory";
 import StoryItem from "../StoryItem";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/bundle";
 
 const Stories = () => {
   return (
-    <div className="px-4 py-3">
-      <div className="flex gap-2">
+    <Swiper
+      style={{
+        padding: "8px",
+      }}
+      spaceBetween={10}
+      slidesPerView={4}
+      navigation={true}
+      modules={[Navigation]}
+    >
+      <SwiperSlide>
         <CreateStory />
+      </SwiperSlide>
+      <SwiperSlide>
         <StoryItem />
+      </SwiperSlide>
+      <SwiperSlide>
         <StoryItem />
+      </SwiperSlide>
+      <SwiperSlide>
         <StoryItem />
-      </div>
-    </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <StoryItem />
+      </SwiperSlide>
+      <SwiperSlide>
+        <StoryItem />
+      </SwiperSlide>
+      <SwiperSlide>
+        <StoryItem />
+      </SwiperSlide>
+      <SwiperSlide>
+        <StoryItem />
+      </SwiperSlide>
+      <SwiperSlide>
+        <StoryItem />
+      </SwiperSlide>
+    </Swiper>
   );
 };
 

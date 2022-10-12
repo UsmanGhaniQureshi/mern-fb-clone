@@ -34,11 +34,9 @@ const MainHome = () => {
           Rooms
         </button>
       </div>
-      <div>
-        {showComp === "stories" && <Stories />}
-        {showComp === "rooms" && <Rooms />}
-        {showComp === "reels" && <Reels />}
-      </div>
+      {showComp === "stories" && <Stories />}
+      {showComp === "rooms" && <Rooms />}
+      {showComp === "reels" && <Reels />}
       <CreatePost />
     </div>
   );

@@ -4,7 +4,7 @@ import Badge from "../Badge";
 
 const RoomItem = ({ isUser }) => {
   return (
-    <div className="flex flex-col justify-between border items-center gap-2 py-3 px-2 rounded-2xl w-36 h-48">
+    <div className="flex flex-col justify-between border items-center gap-2 py-3 px-2 rounded-2xl  h-48">
       {isUser ? (
         <Badge className="w-14 h-14">
           <BiVideoPlus />
@@ -23,7 +23,7 @@ const RoomItem = ({ isUser }) => {
           <p className="text-slate-500 text-[10px]"> Get Started</p>
         </div>
       ) : (
-        <h1 className="font-medium">Sohaib Qadeer</h1>
+        <h1 className="font-medium text-sm">Sohaib Qadeer</h1>
       )}
       <button className="py-1 w-full rounded-md text-sm border border-double border-blue-400">
         {isUser ? "Create" : "Say Hi"}

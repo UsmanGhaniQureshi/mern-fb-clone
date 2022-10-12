@@ -1,15 +1,42 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/bundle";
 import ReelItem from "../ReelItem";
 
 const Reels = () => {
   return (
-    <div className="px-4 py-3">
-      <div className="flex gap-2">
+    <Swiper
+      style={{
+        padding: "8px",
+      }}
+      spaceBetween={10}
+      slidesPerView={4}
+      navigation={true}
+      modules={[Navigation]}
+    >
+      <SwiperSlide>
         <ReelItem />
+      </SwiperSlide>
+      <SwiperSlide>
         <ReelItem />
+      </SwiperSlide>
+      <SwiperSlide>
         <ReelItem />
+      </SwiperSlide>
+      <SwiperSlide>
         <ReelItem />
-      </div>
-    </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <ReelItem />
+      </SwiperSlide>
+      <SwiperSlide>
+        <ReelItem />
+      </SwiperSlide>
+      <SwiperSlide>
+        <ReelItem />
+      </SwiperSlide>
+    </Swiper>
   );
 };
 

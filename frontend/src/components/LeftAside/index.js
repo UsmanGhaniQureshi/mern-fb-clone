@@ -1,10 +1,13 @@
+import { useState } from "react";
+import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 import { aside } from "../../data/aside";
 import AsideItem from "../ASideItem";
 import BadgeUser from "../BadgeUser";
 
 const LeftAside = () => {
+  const [isAll, setIsAll] = useState(false);
   return (
-    <div className="max-w-xs py-2 px-2 h-screen overflow-y-hidden hover:overflow-y-auto">
+    <div className="w-[350px] h-screen  overflow-y-hidden hover:overflow-y-auto p-2">
       <div className="flex p-1 hover:bg-slate-100 items-center gap-4">
         <BadgeUser
           height="w-8"
@@ -13,11 +16,43 @@ const LeftAside = () => {
         />
         <h1 className="font-medium text-sm">Usman Ghani Qureshi</h1>
       </div>
-      {aside.map((item, key) => (
-        <AsideItem item={item} key={key} />
-      ))}
+
+      {isAll ? (
+        <>
+          {aside.map((item, key) => (
+            <AsideItem item={item} key={key} />
+          ))}
+
+          <button
+            onClick={() => setIsAll(false)}
+            className="flex p-1 hover:bg-slate-100 text-sm font-medium w-full items-center gap-4"
+          >
+            <div className="p-2 bg-slate-300 rounded-full text-black">
+              <AiOutlineUp className="text-sm" />
+            </div>
+            Show Less
+          </button>
+        </>
+      ) : (
+        <>
+          {aside.slice(0, 3).map((item, key) => (
+            <AsideItem item={item} key={key} />
+          ))}
+          <button
+            onClick={() => setIsAll(true)}
+            className="flex p-1 hover:bg-slate-100 text-sm font-medium w-full items-center gap-4"
+          >
+            <div className="p-2 bg-slate-300 rounded-full text-black">
+              <AiOutlineDown className=" text-sm" />
+            </div>
+            Show More
+          </button>
+        </>
+      )}
     </div>
   );
 };
 
 export default LeftAside;
+
+// isALL ? aside.map()+btnLess: aside.slice(0,3).map() + btnMore
