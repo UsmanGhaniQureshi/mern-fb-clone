@@ -1,8 +1,8 @@
 import { GoArrowLeft } from "react-icons/go";
-import SearchEdit from "../SearchEdit";
-import SearchUserItem from "../SearchUserItem";
+import SearchEdit from "../../SearchEdit";
+import SearchUserItem from "../../SearchUserItem";
 
-const HeaderRecentSearch = ({ isSearch, onSetIsSearch }) => {
+const RecentSearch = ({ isSearch, onSetIsSearch }) => {
   return (
     <>
       <div className="flex justify-between items-center">
@@ -29,4 +29,4 @@ const HeaderRecentSearch = ({ isSearch, onSetIsSearch }) => {
   );
 };
 
-export default HeaderRecentSearch;
+export default RecentSearch;
