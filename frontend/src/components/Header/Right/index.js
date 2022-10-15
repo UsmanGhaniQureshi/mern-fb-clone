@@ -86,7 +86,7 @@ const HeaderRight = () => {
       )}
       {isAccount && (
         <div
-          className="absolute w-[320px] h-[600px] bg-slate-50 p-2 rounded-xl  right-0 top-12"
+          className="absolute w-[320px] h-[600px] bg-slate-50 rounded-xl  right-0 top-10"
           ref={accountRef}
         >
           <Account />
