@@ -66,14 +66,29 @@ const loginUser = expressAsyncHandler(async (req, res) => {
   const userExist = await User.findOne({ email });
 
   if (!userExist) {
-    throw new Error("User Not Exist");
+    res.json({
+      error: "User Not exist",
+    });
+    return;
   }
 
   if (userExist && (await bcrypt.compare(password, userExist.password))) {
+    const { firstName, lastName, followers, email, friends, userName } =
+      userExist;
     const token = generateToken(userExist);
-    res.json({ token });
+    res.json({
+      firstName,
+      lastName,
+      followers,
+      email,
+      friends,
+      userName,
+      token,
+    });
   }
-  throw new Error("InValid Credentials");
+  res.json({
+    error: "Invalid Credential",
+  });
 });
 
 const generateToken = (user) => {
