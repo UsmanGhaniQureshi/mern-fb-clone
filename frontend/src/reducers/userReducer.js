@@ -1,4 +1,5 @@
-const userReducer = (state = null, action) => {
+const user = localStorage.getItem("user");
+const userReducer = (state = user ? JSON.parse(user) : null, action) => {
   switch (action.type) {
     case "LOGIN":
       return action.payload;

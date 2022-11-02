@@ -4,8 +4,10 @@ import { aside } from "../../data/aside";
 import AsideItem from "../ASideItem";
 import BadgeUser from "../BadgeUser";
 
-const LeftAside = () => {
+const LeftAside = ({ user }) => {
   const [isAll, setIsAll] = useState(false);
+  const { firstName, lastName } = user;
+  console.log(user);
   return (
     <div className="w-[350px] h-screen  overflow-y-hidden hover:overflow-y-auto p-2">
       <div className="flex p-1 hover:bg-slate-100 items-center gap-4">
@@ -14,7 +16,9 @@ const LeftAside = () => {
           width="h-8"
           imgUrl="https://firebasestorage.googleapis.com/v0/b/portfolio-site-4799e.appspot.com/o/images%2FUsmanProfile?alt=media&token=92db1d8f-33b9-4cea-8c4a-83ba07a41bd0"
         />
-        <h1 className="font-medium text-sm">Usman Ghani Qureshi</h1>
+        <h1 className="font-medium text-sm">
+          {firstName} {lastName}
+        </h1>
       </div>
 
       {isAll ? (

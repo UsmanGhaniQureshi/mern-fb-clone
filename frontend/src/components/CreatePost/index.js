@@ -1,7 +1,15 @@
 import { useState } from "react";
-import { FaVideo, FaUserFriends, FaRegSmile } from "react-icons/fa";
+import {
+  FaVideo,
+  FaUserFriends,
+  FaRegSmile,
+  FaUserTag,
+  FaMapMarkerAlt,
+  FaFlag,
+} from "react-icons/fa";
 import { GoTriangleDown } from "react-icons/go";
 import { BiPhotoAlbum } from "react-icons/bi";
+import { BsThreeDots } from "react-icons/bs";
 import Badge from "../Badge";
 import BadgeUser from "../BadgeUser";
 
@@ -39,7 +47,7 @@ const CreatePost = () => {
         </button>
       </div>
       <PostModal visible={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <div className="py-3 bg-white shadow-xl max-w-lg flex-1">
+        <div className="py-3 bg-white shadow-xl max-w-lg flex-1 rounded-md">
           <h1 className="text-center my-3 font-bold">Create Post</h1>
           <div className="h-[1px] w-full bg-slate-500" />
           <div className="flex py-3 px-2 gap-3">
@@ -68,17 +76,36 @@ const CreatePost = () => {
             </div>
             <FaRegSmile size={22} className="text-slate-300" />
           </div>
-          <div className="flex justify-between items-center px-4 py-1 border mx-2 mt-2 font-bold ">
-            <h1>Add To Your Post</h1>
-            <div className="flex items-center gap-2">
-              <Badge className="w-8 h-8 hover:opacity-95">
-                <BiPhotoAlbum className="text-green-500" size={22}/>
-              </Badge>
-              <Badge className="w-6 h-6"></Badge>
-              <Badge className="w-6 h-6"></Badge>
-              <Badge className="w-6 h-6"></Badge>
-              <Badge className="w-6 h-6"></Badge>
+          <div className="flex flex-col gap-3 px-2 mt-4">
+            <div className="flex justify-between items-center px-2 py-1 border  font-bold rounded-md">
+              <h1 className="text-xs hover:cursor-pointer">Add To Your Post</h1>
+              <div className="flex items-center gap-0.5">
+                <Badge className="w-8 h-8 hover:bg-slate-200 transition-colors duration-200 bg-inherit">
+                  <BiPhotoAlbum className="text-green-500" size={28} />
+                </Badge>
+                <Badge className="w-8 h-8 hover:bg-slate-200 transition-colors duration-200 bg-inherit">
+                  <FaUserTag size={22} className="text-sky-500" />
+                </Badge>
+                <Badge className="w-8 h-8 hover:bg-slate-200 transition-colors duration-200 bg-inherit">
+                  <FaRegSmile size={22} className="text-yellow-300" />
+                </Badge>
+                <Badge className="w-8 h-8 hover:bg-slate-200 transition-colors duration-200 bg-inherit">
+                  <FaMapMarkerAlt size={22} className="text-red-600" />
+                </Badge>
+                <Badge className="w-8 h-8 hover:bg-slate-200 transition-colors duration-200 bg-inherit">
+                  <FaFlag size={22} className="text-sky-400 -rotate-[20deg]" />
+                </Badge>
+                <Badge className="w-8 h-8 hover:bg-slate-200 transition-colors duration-200 bg-inherit">
+                  <BsThreeDots size={22} className="text-slate-600" />
+                </Badge>
+              </div>
             </div>
+            <button
+              disabled
+              className="font-bold py-2  text-sm text-center border rounded-md disabled:cursor-not-allowed disabled:bg-slate-300 disabled:opacity-40  disabled:text-black bg-blue-600 text-white"
+            >
+              Post
+            </button>
           </div>
         </div>
       </PostModal>

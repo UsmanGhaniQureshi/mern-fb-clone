@@ -10,7 +10,7 @@ const PostModal = ({ children, visible, onClose }) => {
     <div
       id="Modal"
       onClick={closeModalHandler}
-      className="flex  justify-center items-center fixed inset-0 z-50 bg-white bg-opacity-40 backdrop-blur-0"
+      className="flex  justify-center items-center fixed inset-0 z-50 bg-white bg-opacity-80 backdrop-blur-0"
     >
       <div className="relative w-[450px]  bg-zinc-200 rounded-2xl">
         {children}

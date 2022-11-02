@@ -27,10 +27,9 @@ const HeaderRight = () => {
   useOutside(accountRef, () => setIsAccount(false));
 
   return (
-    <div className="relative z-50">
+    <div className="relative">
       <div className="flex items-center gap-2">
-        <div className="flex items-center bg-slate-200 hover:bg-slate-300 transition-colors duration-200 ease-linear rounded-full px-2 py-1 gap-1"></div>
-        <Badge onClick={() => setIsMenu(true)}>
+        <Badge className="hidden md:flex" onClick={() => setIsMenu(true)}>
           <CgMenuGridO />
         </Badge>
 
@@ -62,7 +61,7 @@ const HeaderRight = () => {
           ref={menuRef}
         >
           <h1 className="font-extrabold text-xl">Menu</h1>
-          <div className="flex-1  py-2 mx-2 flex justify-between gap-5  ">
+          <div className="flex-1  py-2 mx-2 flex md:flex-row flex-col justify-between gap-5  ">
             <HeaderMenuSocial />
             <HeaderMenuCreate />
           </div>

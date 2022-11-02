@@ -1,19 +1,28 @@
-import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import ActivateAccount from "./pages/activateAccount";
 import Profile from "./pages/profile";
-import Auth from "./pages/Auth";
 import Home from "./pages/home";
+import ProtectedRoute from "./routes/protectedRoute";
+import Auth from "./pages/Auth";
+import NotProtectedRoute from "./routes/notProtectedRoute";
 
 function App() {
-  const { user } = useSelector((state) => state);
   return (
     <div>
       <Routes>
-        <Route path="/" element={!user ? <Home /> : <Auth />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/activate/:usertoken" element={<ActivateAccount />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/" element={<Home />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
+        <Route element={<NotProtectedRoute />}>
+          <Route path="/auth" element={<Auth />} />
+        </Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

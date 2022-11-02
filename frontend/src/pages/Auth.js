@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import Modal from "../components/Modal";
 import Login from "../components/Login";
@@ -14,13 +15,20 @@ const Auth = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
+
   const loginHandler = async (values) => {
     const result = await api.post("/user/login", values);
 
-    if (result.data && result.data.token) {
-      dispatch({ type: "LOGIN", payload: result.data });
+    if (result && result.data && result.data.error) {
+      toast.error(result.data.error);
+      return;
+    }
 
-      navigate("/activate/" + result.data.token);
+    if (result.data) {
+      dispatch({ type: "LOGIN", payload: result.data });
+      console.log(result.data);
+      localStorage.setItem("user", JSON.stringify(result.data));
+      navigate("/");
     }
   };
   const registerHandler = async (values) => {
@@ -36,7 +44,6 @@ const Auth = () => {
 
     if (!isValid) {
       setMessage(mess);
-      return;
     } else {
       try {
         result = await api.post("/user/register", {
@@ -50,6 +57,8 @@ const Auth = () => {
       }
     }
   };
+
+  console.log(message);
   return (
     <div>
       <Login onSubmit={loginHandler} onModalSet={() => setIsModalOpen(true)} />
