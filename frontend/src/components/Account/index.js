@@ -7,10 +7,23 @@ import FooterSmall from "../FooterSmall";
 import SettingAndPrivacy from "./SettingAndPrivacy";
 import HelpSupport from "./HelpSupport";
 import DisplayAccessibility from "./DisplayAccessibility";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const Account = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isSettingAndPrivacy, setIsSettingPrivacy] = useState(false);
   const [isHelpSupport, setIsHelpSupport] = useState(false);
   const [isDisplayAccessibility, setIsDisplayAccessibility] = useState(false);
+
+  const logoutHandler = () => {
+    localStorage.removeItem("user");
+    dispatch({
+      type: "LOGOUT",
+    });
+
+    navigate("/auth");
+  };
 
   return (
     <div className="rounded-xl relative bg-white shadow-xl px-3 py-2">
@@ -72,7 +85,10 @@ const Account = () => {
           <h1 className="font-medium">Give Feedback</h1>
         </div>
       </div>
-      <div className="flex gap-3 px-3 py-2 items-center justify-between rounded-lg hover:bg-slate-100 transition-colors duration-300">
+      <div
+        onClick={logoutHandler}
+        className="flex gap-3 px-3 py-2 items-center justify-between rounded-lg hover:bg-slate-100 hover:cursor-pointer transition-colors duration-300"
+      >
         <div className="flex items-center gap-2">
           <Badge>
             <MdLogout />

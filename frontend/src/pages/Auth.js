@@ -26,7 +26,6 @@ const Auth = () => {
 
     if (result.data) {
       dispatch({ type: "LOGIN", payload: result.data });
-      console.log(result.data);
       localStorage.setItem("user", JSON.stringify(result.data));
       navigate("/");
     }
@@ -58,7 +57,6 @@ const Auth = () => {
     }
   };
 
-  console.log(message);
   return (
     <div>
       <Login onSubmit={loginHandler} onModalSet={() => setIsModalOpen(true)} />

@@ -5,6 +5,10 @@ const userReducer = (state = user ? JSON.parse(user) : null, action) => {
       return action.payload;
     case "REGISTER":
       return action.payload;
+    case "ACTIVATE_USER":
+      return { ...state, ...action.payload };
+    case "LOGOUT":
+      return null;
     default:
       return state;
   }

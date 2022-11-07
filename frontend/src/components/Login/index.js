@@ -1,4 +1,5 @@
 import { Form, Formik } from "formik";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import Facebook from "../../icons/facebook";
 import Input from "../Input";
@@ -50,9 +51,12 @@ const Login = ({ onSubmit, onModalSet }) => {
                   >
                     Login
                   </button>
-                  <a className="text-center text-blue-500 mt-1" href="">
+                  <Link
+                    className="text-center text-blue-500 mt-1"
+                    to="/forget-password"
+                  >
                     Forget Password
-                  </a>
+                  </Link>
                 </Form>
               )}
             </Formik>
@@ -79,6 +83,8 @@ const Login = ({ onSubmit, onModalSet }) => {
 export default Login;
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().required("Email is Required").email("Invalid Email Address"),
+  email: Yup.string()
+    .required("Email is Required")
+    .email("Invalid Email Address"),
   password: Yup.string().required("Password is Required"),
 });

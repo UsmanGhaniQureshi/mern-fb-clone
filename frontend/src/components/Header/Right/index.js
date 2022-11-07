@@ -57,7 +57,7 @@ const HeaderRight = () => {
       </div>
       {isMenu && (
         <div
-          className="absolute w-[600px] h-[600px] bg-slate-50 p-2 rounded-xl  overflow-scroll right-0 top-20"
+          className="absolute z-50 w-[600px] h-[600px] bg-slate-50 p-2 rounded-xl  overflow-scroll right-0 top-20"
           ref={menuRef}
         >
           <h1 className="font-extrabold text-xl">Menu</h1>
@@ -69,7 +69,7 @@ const HeaderRight = () => {
       )}
       {isChat && (
         <div
-          className="absolute w-[350px] h-[600px] bg-white p-2 rounded-xl  overflow-scroll right-0 top-14"
+          className="absolute z-50 w-[450px] h-[600px] bg-white p-2 rounded-xl  overflow-scroll right-0 top-14"
           ref={chatRef}
         >
           <Chats />
@@ -77,7 +77,7 @@ const HeaderRight = () => {
       )}
       {isNotification && (
         <div
-          className="absolute w-[400px] h-[600px] bg-slate-50 p-2 rounded-xl overflow-scroll  right-0 top-14"
+          className="absolute  z-50 w-[400px] h-[600px] bg-slate-50 p-2 rounded-xl overflow-scroll  right-0 top-14"
           ref={notifcationRef}
         >
           <FBNotification />
@@ -85,7 +85,7 @@ const HeaderRight = () => {
       )}
       {isAccount && (
         <div
-          className="absolute w-[320px] h-[600px] bg-slate-50 rounded-xl  right-0 top-10"
+          className="absolute z-50 w-[320px] h-[600px] bg-slate-50 rounded-xl  right-0 top-10"
           ref={accountRef}
         >
           <Account />
