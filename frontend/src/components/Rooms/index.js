@@ -10,6 +10,8 @@ const Rooms = () => {
     <Swiper
       style={{
         padding: "8px",
+        marginTop: "8px",
+        borderRadius: "10px",
       }}
       spaceBetween={10}
       slidesPerView={4}

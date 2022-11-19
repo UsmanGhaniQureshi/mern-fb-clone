@@ -50,7 +50,10 @@ const Auth = () => {
           date: Number(date),
           year: Number(year),
         });
-        if (result.data) dispatch({ type: "REGISTER", payload: result.data });
+        if (result.data) {
+          dispatch({ type: "REGISTER", payload: result.data });
+          localStorage.setItem("user", JSON.stringify(result.data));
+        }
       } catch (error) {
         setMessage(error);
       }

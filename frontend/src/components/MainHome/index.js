@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import CreatePost from "../CreatePost";
+import PostListing from "../PostListing";
 import Reels from "../Reels";
 import Rooms from "../Rooms";
 import Stories from "../Stories";
@@ -11,13 +12,12 @@ const MainHome = () => {
   const [showComp, setShowComp] = useState("stories");
   const { user } = useSelector((state) => state);
 
-  console.log(user.isVerified);
   return (
     <div className="max-w-lg flex-1 shadow-xl rounded-2xl">
       {!user.isVerified && (
         <Link
           className="bg-red-500 text-white font-medium px-2 py-1 w-full inline-block"
-          to="/activate"
+          to={"/activate/" + user.token}
         >
           Click Here to Activate User
         </Link>
@@ -52,6 +52,7 @@ const MainHome = () => {
       {showComp === "rooms" && <Rooms />}
       {showComp === "reels" && <Reels />}
       <CreatePost />
+      <PostListing />
     </div>
   );
 };

@@ -17,7 +17,7 @@ import PostModal from "../PostModal";
 const CreatePost = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <div className="rounded-xl px-3 py-2">
+    <div className="rounded-xl mt-2 shadow-lg px-3 py-2">
       <div className="flex gap-2">
         <BadgeUser
           height="w-10"

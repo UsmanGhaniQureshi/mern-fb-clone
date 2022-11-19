@@ -10,6 +10,7 @@ import ProtectedRoute from "./routes/protectedRoute";
 import Auth from "./pages/Auth";
 import NotProtectedRoute from "./routes/notProtectedRoute";
 import ForgetPassword from "./pages/forgetPassword";
+import ChangePassword from "./pages/changepassword";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<Home />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="activate" element={<ActivateAccount />} />
+          <Route path="activate/:token" element={<ActivateAccount />} />
+          <Route path="changepassword" element={<ChangePassword />} />
         </Route>
         <Route element={<NotProtectedRoute />}>
           <Route path="/auth" element={<Auth />} />

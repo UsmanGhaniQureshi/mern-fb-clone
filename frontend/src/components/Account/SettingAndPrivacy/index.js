@@ -1,9 +1,9 @@
 import { FaArrowLeft, FaCog, FaListUl, FaLock, FaRss } from "react-icons/fa";
 import { IoGlobeSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 import Badge from "../../Badge";
 import AccountMenu from "../../common/AccountMenu";
-
 const SettingAndPrivacy = ({ onClick }) => {
   return (
     <div className="rounded-xl -ml-3 px-2 py-1 absolute top-0 w-full h-full bg-white shadow-xl">
@@ -16,12 +16,16 @@ const SettingAndPrivacy = ({ onClick }) => {
         </Badge>
         <h1 className="font-bold text-xl">Setting And Privacy</h1>
       </div>
-      <AccountMenu menuText="Settings">
-        <FaCog size={18} />
-      </AccountMenu>
+      <Link to="/changepassword">
+        <AccountMenu menuText="Settings">
+          <FaCog size={18} />
+        </AccountMenu>
+      </Link>
+
       <AccountMenu menuText="Privacy CheckUp">
         <FaLock size={18} />
       </AccountMenu>
+
       <AccountMenu menuText="Privacy Center">
         <FaLock size={18} />
       </AccountMenu>

@@ -9,7 +9,7 @@ const LeftAside = ({ user }) => {
   const { firstName, lastName } = user;
   console.log(user);
   return (
-    <div className="w-[350px] h-screen  overflow-y-hidden hover:overflow-y-auto p-2">
+    <div className="w-[350px]  h-screen  overflow-y-hidden hover:overflow-y-auto p-2">
       <div className="flex p-1 hover:bg-slate-100 items-center gap-4">
         <BadgeUser
           height="w-8"

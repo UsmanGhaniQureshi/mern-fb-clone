@@ -14,7 +14,9 @@ const InlineLogin = () => {
   const dispatch = useDispatch();
 
   // Login Form
-  const loginHandler = async () => {
+  const loginHandler = async (e) => {
+    e.preventDefault();
+    
     const values = {
       password: passwordRef.current.value,
       email: emailRef.current.value,
