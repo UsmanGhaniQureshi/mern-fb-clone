@@ -4,13 +4,14 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import ActivateAccount from "./pages/activateAccount";
-import Profile from "./pages/profile";
+import ProfilePage from "./pages/Profile";
 import Home from "./pages/home";
 import ProtectedRoute from "./routes/protectedRoute";
 import Auth from "./pages/Auth";
 import NotProtectedRoute from "./routes/notProtectedRoute";
 import ForgetPassword from "./pages/forgetPassword";
 import ChangePassword from "./pages/changepassword";
+import Posts from "./pages/Profile/posts";
 
 function App() {
   return (
@@ -18,7 +19,10 @@ function App() {
       <Routes>
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<Home />} />
-          <Route path="profile" element={<Profile />} />
+          <Route path="/:username" element={<ProfilePage />}>
+            <Route index={true} path="posts" element={<Posts />} />
+          </Route>
+
           <Route path="activate/:token" element={<ActivateAccount />} />
           <Route path="changepassword" element={<ChangePassword />} />
         </Route>
